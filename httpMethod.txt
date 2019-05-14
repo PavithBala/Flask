@@ -1,0 +1,23 @@
+from flask import Flask,request,render_template
+
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def index():
+    return 'Home'
+
+@app.route('/login',methods = ['GET','POST'])
+def login():
+    if request.method == 'POST':
+        return "POST Request"
+    if request.method == 'GET':
+        return "GET Request"
+
+@app.route('/loginform/',methods=['GET'])
+def loginform():
+    return render_template('loginform.html')
+
+if __name__ == '__main__':
+    app.run(port=4000,debug=True)
